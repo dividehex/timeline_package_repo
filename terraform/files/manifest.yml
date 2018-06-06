@@ -1,0 +1,5 @@
+---
+docker_images:
+    - "dividehex/tlpr_apt_xenial_mirror:v0.1"
+    - "dividehex/tlpr_apt_bionic_mirror:v0.1"
+    - "dividehex/tlpr_yum_centos_7.5.1804_mirror:v0.1"
