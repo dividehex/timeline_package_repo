@@ -9,3 +9,5 @@ mkdir -p /data/repos/centos_7.5.1804
 /usr/bin/aws s3 sync /data/repos/centos_7.5.1804/  s3://relops-tlpr/repos/centos_7.5.1804/centos_7.5.1804_latest --no-progress --delete
 
 # Optionally, generate a version manifest for building snapshots 'post ex facto'
+
+echo "Finished"

@@ -9,3 +9,5 @@ mkdir -p /data/repos/bionic
 aws s3 sync /data/repos/bionic/archive.ubuntu.com/ubuntu  s3://relops-tlpr/repos/bionic/bionic_latest --no-progress --delete
 
 # Optionally, generate a version manifest for building snapshots 'post ex facto'
+
+echo "Finished"
