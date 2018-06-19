@@ -31,9 +31,8 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
             "logs:PutLogEvents",
             "logs:CreateLogStream",
         ]
-        # TODO: Limit this
         resources = [
-            "*",
+            "${aws_cloudwatch_log_group.docker_group.arn}",
         ]
     }
 
@@ -67,14 +66,21 @@ data "aws_iam_policy_document" "lambda_assume_role" {
 data "aws_iam_policy_document" "timeline_repo_lambda_access_policy" {
     statement = {
         actions = [
-            "iam:PassRole",
             "ec2:*",
         ]
-        # TODO: limit this
         resources = [ "*" ]
+    }
+
+    statement = {
+        actions = [
+            "iam:PassRole",
+        ]
+        resources = [ "arn:aws:iam::${data.aws_caller_identity.releng_account.account_id}:role/*" ]
     }
 }
 
+# Account ID
+data "aws_caller_identity" "releng_account" {}
 
 data "aws_vpc" "relops_vpc" {
   filter {
