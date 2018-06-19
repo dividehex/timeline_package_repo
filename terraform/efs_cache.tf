@@ -25,9 +25,7 @@ resource "aws_security_group" "timeline_repo_efs_security_group" {
     security_groups = ["${aws_security_group.timeline_repo_security_group.id}"]
   }
 
-  # TODO: properly source vpc_id
-  vpc_id = "vpc-086b6d71"
-
+  vpc_id = "${data.aws_vpc.relops_vpc.id}"
 }
 
 resource "aws_efs_mount_target" "efs_cache_us_west_2c" {

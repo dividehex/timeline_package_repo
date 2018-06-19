@@ -17,8 +17,7 @@ resource "aws_security_group" "timeline_repo_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # TODO: source vpc_id properly
-  vpc_id = "vpc-086b6d71"
+  vpc_id = "${data.aws_vpc.relops_vpc.id}"
 
 #  tags {
 #    Name = "allow_all"
