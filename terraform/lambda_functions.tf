@@ -23,7 +23,6 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   function_name  = "${aws_lambda_function.timeline_repo_mirror_sync.function_name}"
   principal      = "events.amazonaws.com"
   source_arn     = "${aws_cloudwatch_event_rule.nightly.arn}"
-#  qualifier      = "${aws_lambda_alias.test_alias.name}"
 }
 
 # IAM role which dictates what other AWS services the Lambda function
@@ -40,4 +39,9 @@ resource "aws_iam_role_policy" "allow_lambda_ec2_access" {
 	policy = "${data.aws_iam_policy_document.timeline_repo_lambda_access_policy.json}"
 }
 
-# TODO: add cloudwatch log for lamda
+# IAM attach write to cloudwatch policy
+resource "aws_iam_role_policy_attachment" "allow_lambda_cloudwatch_write_log" {
+    role       = "${aws_iam_role.lambda_exec.name}"
+    # This is a baked-in  AWS managed policy to allow lamda to write logs to cloud watch
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
