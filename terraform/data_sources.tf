@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
         actions = [
             "s3:GetObject",
             "s3:PutObject",
+            "s3:DeleteObject",
         ]
         resources = [
             "${aws_s3_bucket.s3_bucket.arn}/*",
@@ -88,3 +89,8 @@ data "aws_vpc" "relops_vpc" {
     values = ["relops-vpc"]
   }
 }
+
+data "aws_subnet_ids" "example" {
+  vpc_id = "${data.aws_vpc.relops_vpc.id}"
+}
+
