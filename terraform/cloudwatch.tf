@@ -7,6 +7,13 @@ resource "aws_cloudwatch_event_rule" "nightly" {
   is_enabled = true
 }
 
+resource "aws_cloudwatch_event_target" "lambda" {
+  rule      = "${aws_cloudwatch_event_rule.nightly.name}"
+  target_id = "TriggerLambda"
+  arn       = "${aws_lambda_function.timeline_repo_mirror_sync.arn}"
+}
+
+
 # Cloudwatch group for docker container logs
 resource "aws_cloudwatch_log_group" "docker_group" {
   name = "tlpr_docker_logs"
