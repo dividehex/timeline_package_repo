@@ -31,6 +31,7 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
         actions = [
             "logs:PutLogEvents",
             "logs:CreateLogStream",
+            "logs:DescribeLogStreams",
         ]
         resources = [
             "${aws_cloudwatch_log_group.docker_group.arn}",
