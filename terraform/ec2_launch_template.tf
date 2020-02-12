@@ -25,9 +25,9 @@ resource "aws_launch_template" "timeline_repo_ec2_launch_template" {
 
   network_interfaces {
     associate_public_ip_address = true
-    subnet_id = tolist(data.aws_subnet_ids.public_subnets.ids)[0]
-    delete_on_termination = true
-    security_groups       = ["${aws_security_group.timeline_repo_security_group.id}"]
+    subnet_id                   = tolist(data.aws_subnet_ids.public_subnets.ids)[0]
+    delete_on_termination       = true
+    security_groups             = ["${aws_security_group.timeline_repo_security_group.id}"]
   }
 
   user_data = base64encode("${data.template_file.user_data_source.rendered}")

@@ -29,7 +29,7 @@ resource "aws_security_group" "timeline_repo_efs_security_group" {
 }
 
 resource "aws_efs_mount_target" "efs_cache_us_west_2c" {
-  file_system_id = aws_efs_file_system.efs_cache.id
-  subnet_id = tolist(data.aws_subnet_ids.public_subnets.ids)[0]
+  file_system_id  = aws_efs_file_system.efs_cache.id
+  subnet_id       = tolist(data.aws_subnet_ids.public_subnets.ids)[0]
   security_groups = ["${aws_security_group.timeline_repo_efs_security_group.id}"]
 }
