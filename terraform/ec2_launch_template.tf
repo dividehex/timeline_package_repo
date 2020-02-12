@@ -21,13 +21,11 @@ resource "aws_launch_template" "timeline_repo_ec2_launch_template" {
   instance_initiated_shutdown_behavior = "terminate"
   instance_type                        = "t2.medium"
 
-  # TODO: change key
-  key_name = "jwatkins_id_rsa_mozilla_2017-05-15"
+  key_name = "relops_common"
 
   network_interfaces {
     associate_public_ip_address = true
-    # TODO: source subnet properly
-    subnet_id             = "subnet-2c9be976"
+    subnet_id = tolist(data.aws_subnet_ids.public_subnets.ids)[0]
     delete_on_termination = true
     security_groups       = ["${aws_security_group.timeline_repo_security_group.id}"]
   }
