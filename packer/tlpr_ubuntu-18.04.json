@@ -8,7 +8,7 @@
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-west-2",
-    "subnet_id": "subnet-2c9be976",
+    "subnet_id": "subnet-0f7d7eedf80f0506b",
     "source_ami_filter": {
         "filters": {
             "virtualization-type": "hvm",
@@ -19,6 +19,7 @@
       "most_recent": true
     },
     "instance_type": "t2.micro",
+    "associate_public_ip_address": true,
     "ssh_username": "ubuntu",
     "ami_name": "tlpr-{{timestamp}}",
     "tags": {
@@ -26,7 +27,7 @@
         "date_created": "{{timestamp}}",
         "onwer": "relops@mozilla.com",
         "generated_by": "Packer {{packer_version}}",
-        "git_repo": ""
+        "git_repo": "https://github.com/mozilla-platform-ops/timeline_package_repo"
     }
   }],
   "provisioners": [
@@ -37,7 +38,7 @@
       {
         "type": "shell",
         "inline": [
-        "sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose",
+        "sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose",
         "sudo chmod 755 /usr/local/bin/docker-compose",
         "sudo apt update",
         "sudo apt-get -y upgrade",
