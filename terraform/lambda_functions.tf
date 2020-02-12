@@ -10,7 +10,7 @@ resource "aws_lambda_function" "timeline_repo_mirror_sync" {
 
   filename         = "${path.module}/lambda_packages/launch_mirror_sync.zip"
   handler          = "launch_mirror_sync.lambda_handler"
-  runtime          = "python3.6"
+  runtime          = "python3.8"
   timeout          = "60"
   source_code_hash = data.archive_file.launch_mirror_sync_lambda_zip.output_base64sha256
   role             = aws_iam_role.lambda_exec.arn
