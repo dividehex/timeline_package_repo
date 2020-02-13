@@ -1,5 +1,3 @@
 ---
 docker_images:
-    - "mozillarelops/tlpr_apt_xenial_mirror:latest"
     - "mozillarelops/tlpr_apt_bionic_mirror:latest"
-    - "mozillarelops/tlpr_yum_centos_7.5.1804_mirror:latest"
