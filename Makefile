@@ -36,3 +36,8 @@ $(DOCKER_BUILDS):
 	docker push mozillarelops/$@:latest
 
 
+destroy_terraform:
+	cd terraform && \
+	terraform destroy
+
+

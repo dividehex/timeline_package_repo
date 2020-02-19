@@ -1,8 +1,12 @@
 terraform {
+  required_version = "~> 0.12"
+  required_providers {
+    aws = "~> 2.0"
+  }
+
   backend "s3" {
-    bucket = "relops-terraform-states"
-    key    = "tf_state/timeline_repo/terraform.tfstate"
-    dynamodb_table = "timeline_repo_terraform_state_lock"
-    region = "us-east-1"
+    bucket = "relops-tf-states"
+    key    = "timeline_repo.tfstate"
+    region = "us-west-2"
   }
 }

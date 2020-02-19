@@ -1,3 +1,3 @@
-profile="mozilla-releng"
-env="timeline_repo"
-region="us-west-2"
+profile = "mozilla-relops"
+env     = "timeline_repo"
+region  = "us-west-2"

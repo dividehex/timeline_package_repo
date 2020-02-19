@@ -4,9 +4,9 @@ resource "aws_security_group" "timeline_repo_security_group" {
 
   # TODO: tighten up both in and out
   egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -17,9 +17,9 @@ resource "aws_security_group" "timeline_repo_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  vpc_id = "${data.aws_vpc.relops_vpc.id}"
+  vpc_id = data.aws_vpc.relops_vpc.id
 
-#  tags {
-#    Name = "allow_all"
-#  }
+  #  tags {
+  #    Name = "allow_all"
+  #  }
 }

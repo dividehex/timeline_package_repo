@@ -6,7 +6,7 @@ mkdir -p /data/repos/bionic
 /usr/bin/apt-mirror /mirror.list
 
 # Sync the entire. aws cli supports sync 'aka delta copy' similar to rsync
-aws s3 sync /data/repos/bionic/archive.ubuntu.com/ubuntu  s3://relops-tlpr/repos/bionic/bionic_latest --no-progress --delete
+aws s3 sync /data/repos/bionic/archive.ubuntu.com/ubuntu  s3://tlpr.relops.mozops.net/repos/bionic/bionic_latest --no-progress --delete
 
 # Optionally, generate a version manifest for building snapshots 'post ex facto'
 
